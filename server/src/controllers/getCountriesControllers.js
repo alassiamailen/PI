@@ -2,7 +2,7 @@ const {Country} = require('../db');
 
 const getCountriesControllers =async()=>{
      
-    const allCountries= await Country.FindAll()
+    const allCountries= await Country.findAll()
     return allCountries;
 }
 

@@ -1,4 +1,9 @@
-// const { Router } = require("express");
-// const getName = require('../handler/getName')
-// const router = Router();
-// module.exports = router;
+ const { Router } = require("express");
+ const getNameHandler = require('../handler/getNameHandler')
+ const router = Router();
+
+router.get('/countries/name?',getNameHandler)
+
+
+
+ module.exports = router;

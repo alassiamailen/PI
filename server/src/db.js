@@ -21,7 +21,7 @@ fs.readdirSync(path.join(__dirname, '/models'))
     modelDefiners.push(require(path.join(__dirname, '/models', file)));
   });
 
-// injectamos la conezion seque a todos los mdoelos 
+// injectamos la conexion seque a todos los modelos 
 modelDefiners.forEach(model => model(sequelize));
 
 let entries = Object.entries(sequelize.models);
@@ -38,5 +38,6 @@ Activity.belongsToMany(Country,{through:'Country_Activity'})
 module.exports = {
   ...sequelize.models, // para poder importar los modelos así: const { Product, User } = require('./db.js');
   conn: sequelize,       // para importart la conexión { conn } = require('./db.js');
-  
+  Activity,
+  Country  
 };

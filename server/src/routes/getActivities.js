@@ -1,4 +1,10 @@
-// const { Router } = require("express");
-// const getActivities = require('../handler/getActivities')
-// const router = Router();
-// module.exports = router;
+ const { Router } = require("express");
+ const getActivitiesHandler = require('../handler/getActivitiesHandler')
+ const router = Router();
+
+
+router.get('/activities',getActivitiesHandler)
+
+
+
+ module.exports = router;

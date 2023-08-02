@@ -1,4 +1,8 @@
-// const { Router } = require("express");
-// const postActivities = require('../handler/postActivities')
-// const router = Router();
-// module.exports = router;
+ const { Router } = require("express");
+ const postActivities = require('../handler/postActivitiesHandler')
+ const router = Router();
+
+
+router.post('/activities',postActivities)
+
+ module.exports = router;

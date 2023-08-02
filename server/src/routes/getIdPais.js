@@ -1,4 +1,8 @@
-// const { Router } = require("express");
-// const getIdPais = require('../handler/getIdPais')
-// const router = Router();
-// module.exports = router;
+const { Router } = require("express");
+const getIdPaisHandler = require('../handler/getIdPaisHandler')
+const router = Router();
+
+router.get('/countries/:id',getIdPaisHandler)
+
+
+module.exports = router;
