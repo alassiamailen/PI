@@ -1,0 +1,28 @@
+.imgCont{
+display: flex;
+align-items: center;
+justify-content: center;    
+}
+.landingCont{
+background-color: black;
+display: flex;
+margin-top:5rem;
+align-items: center;
+justify-content: center;
+flex-direction: column;
+}
+.button{
+    padding: 12px 24px;
+    border-color: white;
+    border-radius: 1rem;   
+    background-color: rgba(0, 255, 255, 0); 
+    color: white;
+}
+.contButton{
+    display: flex;
+    position: absolute;
+    margin-top: 26rem;
+}
+.button:hover{
+    box-shadow: 0 4px 8px #b79449;
+}

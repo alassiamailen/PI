@@ -1,0 +1,12 @@
+.cardCont{
+    color: aliceblue;
+    background-color: rgba(231, 165, 59, 0.822);
+    display: flex;
+    width: 20rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin:1rem;
+    border-radius: 12px;
+}

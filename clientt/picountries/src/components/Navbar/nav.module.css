@@ -1,0 +1,20 @@
+.nav {
+border-color: white;
+ display: flex;
+  justify-content: space-around;
+  align-items: center;   
+}
+.navImg img {
+  width: 45%;
+  margin-top: 1rem;
+}
+.navLink {
+  display: flex;
+  justify-content: space-between;
+  width: 15rem;
+  font-size: 25px;
+}
+.sub{
+    width: 90px;      
+}
+

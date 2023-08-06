@@ -1,0 +1,23 @@
+.formCont form{
+display: flex;
+flex-direction:column;
+justify-content: center;
+align-items: center;
+}
+.formCont input{
+width: 15rem;
+}
+.submit{
+    margin: 2rem;
+    color: white;
+    background-color: black;
+    background: rgba(255, 0, 0, 0.772);
+}
+.error{
+    color: red;
+}
+.letter{
+    color:white;
+    margin-top: 2rem;
+}
+

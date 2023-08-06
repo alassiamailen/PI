@@ -5,8 +5,9 @@ const postActivitiesControllers = async (
   dificultad,
   temporada,
   duracion,  
+  pais
 ) => {   
-  if (!nombre || !dificultad || !temporada) {
+  if (!nombre || !dificultad || !temporada|| !pais) {
     throw new Error("Complete los campos obligatorios para continuar");
   }
   const nameActivity = await Activity.findOne({
@@ -21,9 +22,20 @@ const postActivitiesControllers = async (
     name: nombre,
     dificultad,
     duracion:duracion,
-    temporada:temporada
+    temporada:temporada,
+    pais:pais
   });
-//   await activity.setCountry(pais);
-  return activity;
+  await activity.addCountry(pais);
+  const findPais= await Activity.findOne({
+    where:{id: activity.id},
+    include:[
+      {
+        model: Country,
+        attributes:["name"],
+        through:{attributes:[]}
+      }
+    ]
+  });
+  return findPais;
 };
 module.exports = postActivitiesControllers;
