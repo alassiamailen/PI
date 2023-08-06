@@ -1,3 +1,4 @@
+@import url('https://fonts.googleapis.com/css2?family=Handjet:wght@600&display=swap');
 .nav {
 border-color: white;
  display: flex;
@@ -13,8 +14,20 @@ border-color: white;
   justify-content: space-between;
   width: 15rem;
   font-size: 25px;
+  
 }
 .sub{
     width: 90px;      
+}
+.p{
+  color: white;
+  text-decoration: none;
+  font-family:'Handjet', cursive ;
+  border-color: black;
+  border-radius: 1rem;
+  padding: 14px 24px;
+}
+.p:hover{
+  box-shadow: 0 4px 8px #b79449;
 }
 

@@ -8,16 +8,24 @@ align-items: center;
 width: 15rem;
 }
 .submit{
-    margin: 2rem;
-    color: white;
+    margin: 2rem;    
+    font-family:'Handjet', cursive ;
+    border: 2px solid;
+    border-radius: 1rem;  
+    padding: 12px 18px;
     background-color: black;
-    background: rgba(255, 0, 0, 0.772);
+    color: white;
 }
 .error{
     color: red;
+    
 }
 .letter{
     color:white;
     margin-top: 2rem;
+    font-family:'Handjet', cursive ;
+}
+.submit:hover{
+    box-shadow: 0 4px 8px #b79449;
 }
 

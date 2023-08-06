@@ -1,6 +1,7 @@
 import React from 'react';
 import style from './landing.module.css';
 import { Link } from 'react-router-dom/cjs/react-router-dom';
+import { NavLink } from 'react-router-dom/cjs/react-router-dom';
 
 
 
@@ -12,7 +13,7 @@ const Landing = () => {
       </div>
       
       <div className={style.contButton}>
-      <button className={style.button}><Link to= {'/home'}>INGRESAR</Link></button>
+      <Link className={style.button} to= {'/home'}>INGRESAR</Link>
       </div>
       
     </div>

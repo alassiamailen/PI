@@ -1,5 +1,6 @@
 import React from "react";
 import style from "./card.module.css";
+import { Link } from "react-router-dom/cjs/react-router-dom.min";
 
 const Card = ({ name, continente, img }) => {
   return (
@@ -9,7 +10,7 @@ const Card = ({ name, continente, img }) => {
       </div>
       <div className={style.lab}>
         <label>{continente}</label>
-        <img src={img} alt="imagen bandera"/>
+        <Link to={'/details'}><img src={img} alt="imagen bandera"/></Link>
       </div>
     </div>
   );

@@ -12,11 +12,15 @@ justify-content: center;
 flex-direction: column;
 }
 .button{
-    padding: 12px 24px;
+    padding: 14px 24px;
     border-color: white;
+    border: 2px solid;
     border-radius: 1rem;   
     background-color: rgba(0, 255, 255, 0); 
-    color: white;
+    color: rgb(230, 224, 224);
+    text-decoration: none;
+    font-family:'Handjet', cursive ;
+    
 }
 .contButton{
     display: flex;
