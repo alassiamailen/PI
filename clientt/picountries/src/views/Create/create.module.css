@@ -28,4 +28,10 @@ width: 15rem;
 .submit:hover{
     box-shadow: 0 4px 8px #b79449;
 }
+.countries{
+    background-color: azure;
+}
+.contCountry{
+    border: solid 1px red;
+}
 

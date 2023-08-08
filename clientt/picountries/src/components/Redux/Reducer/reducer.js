@@ -9,6 +9,7 @@ const reducer=(state= initialState,action)=>{
     switch(action.type){
         case GET_COUNTRIES:
             console.log("algo")
+            console.log(state.allCountries)
             return{
                 ...state,
                 allCountries:action.payload,
