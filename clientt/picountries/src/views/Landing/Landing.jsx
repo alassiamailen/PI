@@ -6,8 +6,9 @@ import { NavLink } from 'react-router-dom/cjs/react-router-dom';
 
 
 const Landing = () => {
-  return (
+  return (    
     <div className={style.landingCont}>
+      <div className={style.contWelcome}>WELCOME</div>
       <div className={style.imgCont}>
         <img className={style.pic} src="https://cdn.pixabay.com/photo/2018/03/15/16/11/background-3228704_1280.jpg" alt="imagenMundi" />
       </div>
