@@ -4,6 +4,7 @@ import {
   ORDER,
   POPULATION,
   BYCONTINENT,
+  GET_DETAILS
 } from "../Actions/action-types";
 
 let initialState = {
@@ -12,6 +13,7 @@ let initialState = {
   allCountriesFiltered: [],
   currentPage: 0,
   allCountriesBackUp: [],
+  countryDetail:[]
 };
 
 const reducer = (state = initialState, action) => {
@@ -116,8 +118,12 @@ const reducer = (state = initialState, action) => {
         allCountries:[...countriesFilter].slice(0,items_per_page),
         allCountriesFiltered: countriesFilter,
         currentPage:0
-      }
-      
+      }      
+      case GET_DETAILS:        
+        return{
+          ...state,
+          countryDetail: action.payload
+        }
 
     default:
       return {

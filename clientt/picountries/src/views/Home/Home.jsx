@@ -13,7 +13,7 @@ const Home = () => {
   const dispatch = useDispatch();
   const allCountries = useSelector((state) => state.allCountries);
   useEffect(() => {
-    dispatch(getCountries());
+    dispatch(getCountries());    
   },[]);
 
   const page=(event)=>{
@@ -31,7 +31,7 @@ const Home = () => {
 
   return (
     <div className={style.homeCont}>
-      {console.log("--->", allCountries)}
+     
       <h1 className={style.subtitle}>PAISES</h1>
       <input type="search" name="Buscar" placeholder="Buscar" />
       <div>

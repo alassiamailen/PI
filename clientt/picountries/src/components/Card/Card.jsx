@@ -2,7 +2,7 @@ import React from "react";
 import style from "./card.module.css";
 import { Link } from "react-router-dom/cjs/react-router-dom.min";
 
-const Card = ({ name, continente, img, capital,poblacion }) => {
+const Card = ({ name, continente, img, capital,poblacion,id }) => {
   return (
     <div className={style.cardCont}>
       <div className={style.name}>
@@ -10,7 +10,7 @@ const Card = ({ name, continente, img, capital,poblacion }) => {
       </div>
       <div className={style.lab}>
         <label>{continente}</label>
-        <Link to={'/details'}><img src={img} alt="imagen bandera"/></Link>
+        <Link to={`/details/${id}`}><img src={img} alt="imagen bandera"/></Link>
       </div>
       <div className={style.lab}>
         <label> Capital: {capital} </label>

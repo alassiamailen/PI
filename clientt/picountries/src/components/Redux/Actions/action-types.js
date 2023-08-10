@@ -4,3 +4,4 @@ export const PAGINATE="PAGINATE";
 export const ORDER="ORDER";
 export const POPULATION="POPULATION";
 export const BYCONTINENT="BYCONTINENT";
+export const GET_DETAILS="GET_DETAILS";

@@ -19,7 +19,7 @@ const Navbar = () => {
         </p>
         <p>
           <Link className={style.p} to={"/create"}>
-            Contac
+            CreatActivity
           </Link>
         </p>
       </div>

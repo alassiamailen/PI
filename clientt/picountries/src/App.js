@@ -8,11 +8,6 @@ import Landing from './views/Landing/Landing';
 import { useLocation } from 'react-router-dom/cjs/react-router-dom';
 
 
-
-
-
-
-
 function App() {
  
   const location= useLocation();
@@ -25,7 +20,7 @@ function App() {
         <Route exact path={"/"} component={Landing}/>
         <Route path={"/home"} component={Home}/>
         <Route path={"/create"} component={Create}/>
-        <Route path={"/details"} component={Details}/>        
+        <Route path={"/details/:id"} component={Details}/>        
       </Switch>    
       
     </div>

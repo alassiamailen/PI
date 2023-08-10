@@ -8,7 +8,7 @@ import { postActivity } from "../../components/Redux/Actions/actionPostActivity"
 const Create = () => {
   const dispatch = useDispatch();
   const allCountries = useSelector((state) => state.backUp);
-  const [select,setSelect]= useState([]);
+  let [select,setSelect]= useState([]);
 
   useEffect(() => {
     dispatch(getCountries());
@@ -32,10 +32,7 @@ const Create = () => {
     duration:"",
     season:"*Campo obligatorio*",
     country:"*Campo obligatorio*"
-  });  
-
-
-  
+  });    
 
   const handleChange = (event) => {
     setStateForm({
@@ -52,10 +49,10 @@ const Create = () => {
   const handleSubmit = (event) => {
     //para que no se recargue la pag
     event.preventDefault();
+
     // dispatch(postActivity(stateForm))
-
+    
     console.log(stateForm)
-
   };
 
   const handleSelect = (event) => {
@@ -64,55 +61,64 @@ const Create = () => {
       ...stateForm,
       arrCountry: [...stateForm.arrCountry, event.target.value],
     });
-
+    console.log("arr",stateForm.arrCountry)
     const countries= allCountries.find((count)=>count.id === event.target.value)
-    console.log(allCountries)
+
     setSelect([
       ...select,
       {
         id:event.target.value,
         name: countries.name,
-        flag: countries.flagImage
+        flag: countries.img,        
       }
-    ])
-    if(stateForm.arrCountry.includes(event.target.value)){
-      return alert('Este pais ya fue agregado')
-    }
-    if(stateForm.arrCountry.length>=5){
-      return alert('Maximo 5 paises')
+    ])    
+    if(stateForm.arrCountry.length > 4){
+      return alert('Máximo 5 paises')
     }
   
-    validate(
-      
+    validate(      
       stateForm,
-        //  [event.target.name]: event.target.value,
+      //[event.target.name]: event.target.value,
       
       event.target.name
     );
   };
-  const deleteCountry=(event)=>{
+    const deleteCountry=(id)=>{
+      console.log("selec antes",select)
+     select= select.filter((c)=> c.id!== id)
+      console.log("select dsp",select)
+     console.log(id)
 
-  }
+    //  setStateForm({...stateForm, allCountries:select})
+    //  setSelect(select.filter((c)=> c.id !== id))
+    //  console.log("filterdelete",filterCountrie)
+    //  console.log("setselect",select)
+    }
+    
+    
+    
+    //elimino los paises que selecciona el cliente
+  const filterCountries= allCountries.filter((count)=>!stateForm.arrCountry.includes(count.id))
+  console.log("filter",filterCountries)
+  
 
-  const filterCountries= allCountries.filter((c)=>!stateForm.arrCountry.includes(c.id))
-
-  // const disable = () => {
-  //   let disabled = true;
-  //   for (let err in error) {
-  //     if (error[err] === "") {
-  //       disabled = false;
-  //     } else {
-  //       disabled = true;
-  //       break;
-  //     }
-  //   }
-  //   return disabled;
-  // };
+  const disable = () => {
+    let disabled = true;
+    for (let err in error) {
+      if (error[err] === "") {
+        disabled = false;
+      } else {
+        disabled = true;
+        break;
+      }
+    }
+    return disabled;
+  };
   const validate = (stateForm,name) => {
     const regex = /^[a-zA-Z\s]+$/
     if(name==="name"){
       console.log(name)
-      if(stateForm.name === ""|| stateForm.name.length < 5 || stateForm.name.length > 30){
+      if(stateForm.name === ""|| stateForm.name.length < 5 || stateForm.name.length > 30 || !regex.test(stateForm.name)){
         setError({...error, name:"*Campo obligatorio debe tener entre 5 y 30 caracteres Alfabéticos*"})
       }   
       else {
@@ -149,7 +155,7 @@ const Create = () => {
       }
     }
     if(name==="country"){
-      if(stateForm.arrCountry.length===0){
+      if(stateForm.arrCountry.length === 0){
         setError({
           ...error,
           season:"*Campo obligatorio*"
@@ -186,10 +192,10 @@ const Create = () => {
         <label className={style.letter}>Season</label>
         <select name="season" onChange={handleChange}>
           <option selected value="0">Select season...</option>
-          <option name="verano">Verano</option>
-          <option name="otoño">Otoño</option>
-          <option name="primavera">Primavera</option>
-          <option name="invierno">Invierno</option>
+          <option >Verano</option>
+          <option>Otoño</option>
+          <option>Primavera</option>
+          <option>Invierno</option>
         </select>
         <label className={style.error}>{error.season}</label>
         
@@ -198,7 +204,7 @@ const Create = () => {
         <select name="allCountries" id="country" onChange={handleSelect}>
           {/* este mapea  */}
           <option selected>Select country...</option>
-          {filterCountries?.map((country, index) => (
+          {filterCountries?.map((country) => (
             <option key={country.id} value={country.id}>
               {country.name}
             </option>
@@ -213,13 +219,14 @@ const Create = () => {
               <div className={style.contCountry}>
                 <p>{country.name}</p>
                 <img src={country.flag} alt="img" />
-                <button onClick={deleteCountry}>X</button>
+                <button onClick={()=>deleteCountry(country.id)}>X</button>
               </div>
             );
           })}
         </div>
 
         <input
+
           className={style.submit}
           type="submit"
           value="Create Activity"
