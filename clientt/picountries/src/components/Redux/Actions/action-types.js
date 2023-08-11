@@ -5,3 +5,4 @@ export const ORDER="ORDER";
 export const POPULATION="POPULATION";
 export const BYCONTINENT="BYCONTINENT";
 export const GET_DETAILS="GET_DETAILS";
+export const GET_NAME="GET_NAME";

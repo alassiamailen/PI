@@ -4,15 +4,15 @@ import {
   ORDER,
   POPULATION,
   BYCONTINENT,
-  GET_DETAILS
+  GET_DETAILS,
+  GET_NAME
 } from "../Actions/action-types";
 
 let initialState = {
   backUp:[],
   allCountries: [],
   allCountriesFiltered: [],
-  currentPage: 0,
-  allCountriesBackUp: [],
+  currentPage: 0,  
   countryDetail:[]
 };
 
@@ -26,7 +26,7 @@ const reducer = (state = initialState, action) => {
         allCountriesFiltered: action.payload,   
         backUp: action.payload
       };
-      break;
+      
     case PAGINATE:
       const next_page = state.currentPage + 1;
       const prev_page = state.currentPage - 1;
@@ -46,7 +46,7 @@ const reducer = (state = initialState, action) => {
 
       return {
         ...state,
-        allCountries: [...state.allCountriesFiltered].splice(
+        allCountries: [...state.allCountries].splice(
           firstIndex,
           items_per_page
         ),
@@ -112,18 +112,27 @@ const reducer = (state = initialState, action) => {
       }
       break;
     case BYCONTINENT:
-      const countriesFilter=[...state.allCountriesFiltered].filter((country)=>country.continente === action.payload)
+        console.log(state.allCountries)
+      const countriesFilter = [...state.allCountriesFiltered].filter(element =>
+        element.continente === action.payload) 
       return{
         ...state,
-        allCountries:[...countriesFilter].slice(0,items_per_page),
-        allCountriesFiltered: countriesFilter,
+        allCountries:[...countriesFilter].splice(0,items_per_page),
+        // allCountriesFiltered: countriesFilter,
         currentPage:0
       }      
-      case GET_DETAILS:        
-        return{
+    case GET_DETAILS:        
+      return{
           ...state,
           countryDetail: action.payload
-        }
+      }
+    case GET_NAME:
+      return{
+        ...state,
+        allCountries:action.payload,
+        allCountriesFiltered:action.payload,
+               
+      }
 
     default:
       return {

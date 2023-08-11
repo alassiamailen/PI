@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import style from "./home.module.css";
 import Cards from "../../components/Cards/Cards";
 import { useEffect } from "react";
@@ -8,8 +8,12 @@ import { paginate } from "../../components/Redux/Actions/actionsPaginate";
 import { order } from "../../components/Redux/Actions/actionsOrder";
 import { population } from "../../components/Redux/Actions/actionsPopulation";
 import { byContinent } from "../../components/Redux/Actions/actionsByContinent";
+import { getName } from "../../components/Redux/Actions/actionsGetName";
+
+
 
 const Home = () => {
+  const [name,setName]= useState('');
   const dispatch = useDispatch();
   const allCountries = useSelector((state) => state.allCountries);
   useEffect(() => {
@@ -28,12 +32,24 @@ const Home = () => {
   const filterCont=(event)=>{
     dispatch(byContinent(event.target.value))
   }
+  const handlerSubmit=(event)=>{    
+    setName(event.target.value)
+  }
+  const searchCountry=(event)=>{
+    const regex= /^[a-zA-ZñÑáéíóúÁÉÍÓÚ]+$/   
+    event.preventDefault();
+    if(!name) return alert('Ingrese un pais para continuar')
+    if(!regex.test(name)) return alert('Solo se permiten letras')
+    dispatch(getName(name))
+    setName('')
+  }
 
   return (
     <div className={style.homeCont}>
      
       <h1 className={style.subtitle}>PAISES</h1>
-      <input type="search" name="Buscar" placeholder="Buscar" />
+      <input  value={name} onChange={(event)=>handlerSubmit(event)} type="text" name="Buscar" placeholder="Buscar" />
+      <button type="submit" onClick={searchCountry}>Search</button>
       <div>
         <button name="prev" onClick={page}>PREV</button>
         <button name="next" onClick={page}>NEXT</button>
@@ -50,14 +66,13 @@ const Home = () => {
           
           <select onChange={filterCont} name="continent">
           <option value="">Continentes...</option>
-            <option value="asia">ASIA</option>
-            <option value="americaSur">AMERICA DEL SUR</option>
-            <option value="americaNorte">AMERICA DEL NORTE</option>
-            <option value="africa">AFRICA</option>
-            <option value="antartida">ANTARTIDA</option>
-            <option value="europa">EUROPA</option>
-            <option value="oceania">OCEANIA</option>
-
+            <option value="Asia">ASIA</option>
+            <option value="South America">AMERICA DEL SUR</option>
+            <option value="North America">AMERICA DEL NORTE</option>
+            <option value="Africa">AFRICA</option>
+            <option value="Antarctica">ANTARTIDA</option>
+            <option value="Europe">EUROPA</option>
+            <option value="Oceania">OCEANIA</option>
           </select>
       </div>
         
