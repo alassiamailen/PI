@@ -31,7 +31,7 @@ const database= async()=>{
 }
 
 // si esta en false no se borra la bd, para hacer el post pasar a true
-conn.sync({ force: false }).then(() => {
+conn.sync({ force: true }).then(() => {
 server.listen(PORT, async () => {
 
   console.log(`Server listening on port ${PORT}`);

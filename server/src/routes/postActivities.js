@@ -5,4 +5,5 @@
 
 router.post('/activities',postActivities)
 
+
  module.exports = router;

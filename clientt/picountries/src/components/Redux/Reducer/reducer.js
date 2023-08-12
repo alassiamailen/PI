@@ -5,7 +5,8 @@ import {
   POPULATION,
   BYCONTINENT,
   GET_DETAILS,
-  GET_NAME
+  GET_NAME,
+  POST_ACTIVITY
 } from "../Actions/action-types";
 
 let initialState = {
@@ -18,7 +19,9 @@ let initialState = {
 
 const reducer = (state = initialState, action) => {
   const items_per_page = 10;
+
   switch (action.type) {
+    
     case GET_COUNTRIES:
       return {
         ...state,
@@ -26,8 +29,15 @@ const reducer = (state = initialState, action) => {
         allCountriesFiltered: action.payload,   
         backUp: action.payload
       };
+
+    case POST_ACTIVITY:
+      console.log("POST")
+      return{
+        ...state
+      }
       
     case PAGINATE:
+      
       const next_page = state.currentPage + 1;
       const prev_page = state.currentPage - 1;
       const firstIndex =
@@ -112,7 +122,7 @@ const reducer = (state = initialState, action) => {
       }
       break;
     case BYCONTINENT:
-        console.log(state.allCountries)
+        
       const countriesFilter = [...state.allCountriesFiltered].filter(element =>
         element.continente === action.payload) 
       return{

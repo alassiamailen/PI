@@ -14,15 +14,13 @@ const Create = () => {
     dispatch(getCountries());
 
     return ()=>{
-
-
     }
   }, []);
 
   const [stateForm, setStateForm] = useState({
     name: "",
     difficulty: "",
-    duration: "",
+    duration:"",
     season: "",
     arrCountry: [],
   });
@@ -49,10 +47,19 @@ const Create = () => {
   const handleSubmit = (event) => {
     //para que no se recargue la pag
     event.preventDefault();
-
-    // dispatch(postActivity(stateForm))
     
-    console.log(stateForm)
+    const body={
+      nombre: stateForm.name,
+      dificultad: stateForm.difficulty,
+      duracion: parseInt(stateForm.duration),
+      temporada: stateForm.season,
+      pais: stateForm.arrCountry,      
+    }
+
+    dispatch(postActivity(body))
+    console.log("entre al submit")
+    console.log("q",postActivity(body))   
+    
   };
 
   const handleSelect = (event) => {
@@ -85,35 +92,28 @@ const Create = () => {
   };
     const deleteCountry=(id)=>{
       console.log("selec antes",select)
-     select= select.filter((c)=> c.id!== id)
-      console.log("select dsp",select)
-     console.log(id)
-
-    //  setStateForm({...stateForm, allCountries:select})
-    //  setSelect(select.filter((c)=> c.id !== id))
-    //  console.log("filterdelete",filterCountrie)
-    //  console.log("setselect",select)
+      const selectFilter = select.filter((c)=> c.id!== id)
+      setSelect([...selectFilter])  
     }
     
-    
-    
+        
     //elimino los paises que selecciona el cliente
   const filterCountries= allCountries.filter((count)=>!stateForm.arrCountry.includes(count.id))
   console.log("filter",filterCountries)
   
 
-  const disable = () => {
-    let disabled = true;
-    for (let err in error) {
-      if (error[err] === "") {
-        disabled = false;
-      } else {
-        disabled = true;
-        break;
-      }
-    }
-    return disabled;
-  };
+  // const disable = () => {
+  //   let disabled = true;
+  //   for (let err in error) {
+  //     if (error[err] === "") {
+  //       disabled = false;
+  //     } else {
+  //       disabled = true;
+  //       break;
+  //     }
+  //   }
+  //   return disabled;
+  // };
   const validate = (stateForm,name) => {
     const regex = /^[a-zA-Z\s]+$/
     if(name==="name"){
