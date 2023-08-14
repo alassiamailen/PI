@@ -15,19 +15,42 @@ border-color: white;
   width: 15rem;
   font-size: 25px;
   
+  
+}
+.navLink img{
+ 
+  width: 3rem;
 }
 .sub{
     width: 90px;      
 }
 .p{
   color: white;
-  text-decoration: none;
-  font-family:'Handjet', cursive ;
+  text-decoration: none;  
   border-color: black;
-  border-radius: 1rem;
-  padding: 15px 20px;
+  border-radius: 1rem; 
+  padding: 0.5rem;
+  width: 5rem;  
+  padding: 14px 25px;
+
 }
 .p:hover{
+  box-shadow: 0 4px 8px #b79449;
+}
+.link{
+  color: white;
+  font-family:'Handjet', cursive ;
+}
+.activity{
+  font-family:'Handjet', cursive ;
+  color: white;
+  text-decoration: none;  
+  border-color: black;
+  border-radius: 1rem;
+  padding: 14px 25px;
+
+}
+.activity:hover{
   box-shadow: 0 4px 8px #b79449;
 }
 

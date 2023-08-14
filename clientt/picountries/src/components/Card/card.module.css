@@ -1,15 +1,21 @@
 .cardCont{
     color: aliceblue;
-    background-color: #b79449;
+    background-color:#05050521;
     display: flex;
     width: 20rem;
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    margin:1rem;
+    margin:1rem;    
     border-radius: 12px;
-}
-.cardCont:hover{
     box-shadow: 0 4px 8px #b79449;
+    padding:0.55rem;
+}
+.name{
+    font-family:'Handjet', cursive ;
+    font-size: x-large;
+}
+.img{
+    border-radius: 4rem;
 }

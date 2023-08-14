@@ -43,6 +43,9 @@ const Home = () => {
     dispatch(getName(name))
     setName('')
   }
+  const refresh=(event)=>{
+    dispatch(getCountries(event))
+  }
 
   return (
     <div className={style.homeCont}>
@@ -50,6 +53,11 @@ const Home = () => {
       <h1 className={style.subtitle}>PAISES</h1>
       <input  value={name} onChange={(event)=>handlerSubmit(event)} type="text" name="Buscar" placeholder="Buscar" />
       <button type="submit" onClick={searchCountry}>Search</button>
+      <div>
+        <button onClick={refresh}>
+          Refresh
+        </button>
+      </div>
       <div>
         <button name="prev" onClick={page}>PREV</button>
         <button name="next" onClick={page}>NEXT</button>
@@ -59,13 +67,13 @@ const Home = () => {
         <button name="za" onClick={orderByName}>Z-A</button>
       </div>
       <div>
-        <button name="mayorP" onClick={orderByPopulation}>Mayor Poblacion</button>
-        <button name="menorP" onClick={orderByPopulation}>Menor Poblacion</button>
+        <button name="mayorP" onClick={orderByPopulation}>+ Population</button>
+        <button name="menorP" onClick={orderByPopulation}> - Population</button>
       <div>
       <div>
           
           <select onChange={filterCont} name="continent">
-          <option value="">Continentes...</option>
+          <option value="">Continents...</option>
             <option value="Asia">ASIA</option>
             <option value="South America">AMERICA DEL SUR</option>
             <option value="North America">AMERICA DEL NORTE</option>

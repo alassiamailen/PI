@@ -57,8 +57,7 @@ const Create = () => {
     }
 
     dispatch(postActivity(body))
-    console.log("entre al submit")
-    console.log("q",postActivity(body))   
+    
     
   };
 
@@ -91,7 +90,7 @@ const Create = () => {
     );
   };
     const deleteCountry=(id)=>{
-      console.log("selec antes",select)
+      
       const selectFilter = select.filter((c)=> c.id!== id)
       setSelect([...selectFilter])  
     }

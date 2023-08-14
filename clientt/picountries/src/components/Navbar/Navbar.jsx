@@ -2,6 +2,7 @@ import React from "react";
 import { Link } from "react-router-dom/cjs/react-router-dom.min";
 import style from "./nav.module.css";
 
+
 const Navbar = () => {
   return (
     <div className={style.nav}>
@@ -12,19 +13,29 @@ const Navbar = () => {
         </Link>
       </div>
       <div className={style.navLink}>
-        <p>
-          <Link className={style.p} to={"/home"}>
-            Home
-          </Link>
-        </p>
-        <p>
-          <Link className={style.p} to={"/create"}>
-            CreatActivity
-          </Link>
-        </p>
+        <div className={style.p}>
+        
+            <Link to={"/home"}>
+            <img src="https://iili.io/HDcaydP.th.png" alt="" />
+            </Link>            
+         
+        </div>
+        <div className={style.p}>
+          <p>
+            <Link className={style.link} to={"/create"}>
+              Creat Activity
+            </Link>
+          </p>
+        </div>
+        <div className={style.activity}>
+          <p>
+            <Link className={style.link} to={"/activities"}>
+              My Activities
+            </Link>
+          </p>
+        </div>
       </div>
-      <div>       
-      </div>
+      <div></div>
     </div>
   );
 };

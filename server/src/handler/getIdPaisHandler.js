@@ -11,4 +11,4 @@ const getCountriesHandler = async(req,res)=>{
 
     }
 }
-module.exports=getCountriesHandler;
+module.exports = getCountriesHandler;

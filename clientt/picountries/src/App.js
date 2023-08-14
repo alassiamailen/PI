@@ -6,6 +6,7 @@ import Details from './views/Details/Details'
 import Navbar from './components/Navbar/Navbar';
 import Landing from './views/Landing/Landing';
 import { useLocation } from 'react-router-dom/cjs/react-router-dom';
+import Activities from './views/Activities/Activities';
 
 
 function App() {
@@ -20,7 +21,8 @@ function App() {
         <Route exact path={"/"} component={Landing}/>
         <Route path={"/home"} component={Home}/>
         <Route path={"/create"} component={Create}/>
-        <Route path={"/details/:id"} component={Details}/>        
+        <Route path={"/details/:id"} component={Details}/> 
+        <Route path={"/activities"} component={Activities}/>       
       </Switch>    
       
     </div>

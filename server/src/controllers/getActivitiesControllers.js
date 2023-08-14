@@ -7,12 +7,12 @@ const allActivities = await Activity.findAll({
     include:[
         {
           model: Country,
-          attributes:["name"],
+          attributes:["name","img"],
           through:{attributes:[]}
         }
       ]
 })
-console.log(allActivities)
+
 return allActivities;
 
 }

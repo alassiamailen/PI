@@ -6,7 +6,8 @@ import {
   BYCONTINENT,
   GET_DETAILS,
   GET_NAME,
-  POST_ACTIVITY
+  GET_ACTIVITIES,
+  DELETE_ACTIVITIES
 } from "../Actions/action-types";
 
 let initialState = {
@@ -14,8 +15,10 @@ let initialState = {
   allCountries: [],
   allCountriesFiltered: [],
   currentPage: 0,  
-  countryDetail:[]
+  countryDetail:[],
+  allActivities:[]
 };
+
 
 const reducer = (state = initialState, action) => {
   const items_per_page = 10;
@@ -30,11 +33,21 @@ const reducer = (state = initialState, action) => {
         backUp: action.payload
       };
 
-    case POST_ACTIVITY:
-      console.log("POST")
+    case GET_ACTIVITIES:
       return{
-        ...state
+        ...state, 
+        allActivities: action.payload
+
+      };
+    case DELETE_ACTIVITIES:
+      console.log(action.payload)
+      return{
+        ...state,
+        allActivities:state.allActivities.filter((a)=>a.id !== action.payload)
+
       }
+
+    
       
     case PAGINATE:
       

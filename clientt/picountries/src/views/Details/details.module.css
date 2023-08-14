@@ -1,16 +1,44 @@
 .title{
     color: white;
-    align-items: center;
-    margin: 5rem;
+    align-items: center;  
 }
 .detail{
     color: white;
-    align-items: center;
-    margin: 2rem;
+    align-items: center;   
+    
 }
-.contDetail{
-    margin: 5rem;
+.contDetail{   
+    font-family:'Handjet', cursive ;
+    font-size: x-large;   
+}
+.img{
+   border-radius: 2rem;
 }
 .back{
+  background-color: #b79449;
+  font-size: large;
+  border-radius: 0.5rem;    
+}
+.x{
+    display: flex;
     
+}
+.cont{
+    background-color: #050505;
+    border-radius: 4rem;
+    padding-bottom: 1rem;
+    width: 50rem;
+    display: flex;
+    justify-content: center;    
+    box-shadow: 0 4px 8px #b79449;
+
+}
+
+.name{     
+    font-family:'Handjet', cursive ;
+}
+.contenedor{
+    display: flex;   
+    justify-content: center;
+   
 }

@@ -1,0 +1,30 @@
+
+.info{
+    color: white;
+}
+.p{
+    color:white;
+    font-family:'Handjet', cursive ;
+    font-size: x-large;
+    display: flex;
+
+}
+.contP{
+    margin-left: 3rem;
+    background-color: blueviolet;
+    
+}
+.x{
+    display: flex;
+    border-radius: 2rem;
+    font-size: large;
+    
+}
+.button{
+    
+    display: flex;
+    
+}
+.img{
+    border-radius: 3rem;
+}

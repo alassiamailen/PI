@@ -14,24 +14,25 @@ const Details = () => {
 
   useEffect(() => {
     dispatch(getDetails(id));
-    return () => {};
-  }, [dispatch, id]);
+    
+  },[dispatch, id]);
 
   return (
+    <div className={style.contenedor}>
     <div className={style.cont}>
      
-      <div className={style.back}>
+      <div className={style.x} >
         <Link to="/home">
-          <button>X</button>
+          <button className={style.back} >✖</button>
         </Link>
       </div>
 
       <div>
-        <div>
-          <h1>{countryDetail.name}</h1>
+        <div className={style.name}>
+          <h1 className={style.detail}>{countryDetail.name}</h1>
         </div>
-        <div>
-          <img className={style.detail} src={countryDetail.img} alt="img" />
+        <div >
+          <img className={style.img} src={countryDetail.img} alt="img" />
         </div>
         <div className={style.contDetail}>
           <p className={style.detail}>Continente: {countryDetail.continente}</p>
@@ -42,6 +43,7 @@ const Details = () => {
           
         </div>
       </div>
+    </div>
     </div>
   );
 };

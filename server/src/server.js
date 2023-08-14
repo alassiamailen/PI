@@ -7,6 +7,7 @@ const getIdPais = require('./routes/getIdPais');
 const getName = require('./routes/getName');
 const postActivities= require('./routes/postActivities');
 const getActivities=require('./routes/getActivities');
+const deleteActivities=require('./routes/deleteActivities');
 const server = express();
 
 server.use(morgan("dev"));
@@ -18,6 +19,7 @@ server.use('/', getName);
 server.use('/', getIdPais);
 server.use('/',postActivities);
 server.use('/', getActivities);
+server.use('/',deleteActivities);
 
 
 module.exports = server;

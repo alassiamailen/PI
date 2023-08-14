@@ -8,12 +8,12 @@ const Card = ({ name, continente, img, capital,poblacion,id }) => {
       <div className={style.name}>
         <h4>{name}</h4>
       </div>
-      <div className={style.lab}>
+      <div className={style.name}>
         <label>{continente}</label>
-        <Link to={`/details/${id}`}><img src={img} alt="imagen bandera"/></Link>
+        <Link to={`/details/${id}`}><img className={style.img} src={img} alt="imagen bandera"/></Link>
       </div>
-      <div className={style.lab}>
-        <label> Capital: {capital} </label>
+      <div className={style.name}>
+        <label>Capital: {capital} </label>
         <label>Poblacion: {poblacion}</label>
       </div>
     </div>
