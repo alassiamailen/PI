@@ -1,0 +1,12 @@
+.divCont {
+  display: flex;
+  justify-content: center;
+
+
+  margin-inline: 0px;
+  padding-inline: 0px;
+  height: 3rem;
+
+  bottom: 0;
+  width: 100%;
+}

@@ -4,26 +4,46 @@ import Cards from "../../components/Cards/Cards";
 import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { getCountries } from "../../components/Redux/Actions/actionsGetCountries";
-import { paginate } from "../../components/Redux/Actions/actionsPaginate";
 import { order } from "../../components/Redux/Actions/actionsOrder";
 import { population } from "../../components/Redux/Actions/actionsPopulation";
 import { byContinent } from "../../components/Redux/Actions/actionsByContinent";
 import { getName } from "../../components/Redux/Actions/actionsGetName";
-
+import Paginate from "../../components/Paginate/paginate";
+import  PageNumbers from "../../components/Paginate/pageNumbers";
 
 
 const Home = () => {
   const [name,setName]= useState('');
   const dispatch = useDispatch();
-  const Renderiza = useSelector((state) => state.Renderiza);
+  const allCountries = useSelector((state) => state.allCountries);
+
+
+  const [currentPage, setCurrentPage] = useState(1)
+  const [countriesPage] = useState(10)
+  const indexLastCountry = currentPage * countriesPage
+  const indexFirstCountry = indexLastCountry - countriesPage
+  const currentCountries = allCountries.slice(indexFirstCountry, indexLastCountry);   
+  const cantCountries = allCountries.length
+
+  const numerito = Math.ceil(cantCountries/countriesPage)
+
+  const arrayPages = PageNumbers(countriesPage, cantCountries)
+  const cantPages = arrayPages.length
+
+
+  if(currentPage > cantPages){
+    setCurrentPage(1) 
+  }
+
+  const paginate = (pageNumber) => {
+    setCurrentPage(pageNumber) 
+  }
 
   useEffect(() => {
     dispatch(getCountries());    
   },[]);
 
-  const page=(event)=>{
-    dispatch(paginate(event.target.name))
-  }
+
 
   const orderByName=(event)=>{
     dispatch(order(event.target.name))
@@ -35,6 +55,10 @@ const Home = () => {
 
   const filterCont=(event)=>{
     dispatch(byContinent(event.target.value))
+  }
+
+  const filterActivities = (event) => {
+    dispatch()
   }
 
   const handlerSubmit=(event)=>{    
@@ -65,10 +89,7 @@ const Home = () => {
           Refresh
         </button>
       </div>
-      <div>
-        <button name="prev" onClick={page}>PREV</button>
-        <button name="next" onClick={page}>NEXT</button>
-      </div>
+
       <div>        
         <button name="az" onClick={orderByName}>A-Z</button>
         <button name="za" onClick={orderByName}>Z-A</button>
@@ -90,10 +111,25 @@ const Home = () => {
             <option value="Oceania">OCEANIA</option>
           </select>
       </div>
+
+      <div>        
+        <select onChange={filterActivities} name="activities">
+          <option>ACTIVITIES</option>
+
+        </select>
+      </div>
         
+        <div>
+          <Paginate
+                      countriesPage={countriesPage}
+                      allCountries={allCountries.length}
+                      paginate={paginate}
+                      currentpage={currentPage}
+              />
+        </div>
 
         </div>
-        <Cards allCountry={Renderiza}/>
+        <Cards allCountry={currentCountries}/>
       </div>
     </div>
   );
