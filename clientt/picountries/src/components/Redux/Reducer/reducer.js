@@ -7,8 +7,10 @@ import {
   GET_DETAILS,
   GET_NAME,
   GET_ACTIVITIES,
-  DELETE_ACTIVITIES
+  DELETE_ACTIVITIES,
+  CLEAN_FORM
 } from "../Actions/action-types";
+
 
 let initialState = {
   backUp:[],
@@ -16,7 +18,8 @@ let initialState = {
   allCountriesFiltered: [],
   currentPage: 0,  
   countryDetail:[],
-  allActivities:[]
+  allActivities:[],
+  
 };
 
 
@@ -40,13 +43,13 @@ const reducer = (state = initialState, action) => {
 
       };
     case DELETE_ACTIVITIES:
-      console.log(action.payload)
+     
       return{
         ...state,
         allActivities:state.allActivities.filter((a)=>a.id !== action.payload)
 
       }
-
+    
     
       
     case PAGINATE:

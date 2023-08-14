@@ -9,7 +9,7 @@ export function getActivities(){
         
         try {        
             const response = await axios.get('http://localhost:3001/activities/')    
-            console.log("res",response.data)
+            
 
             dispatch({
                 type:GET_ACTIVITIES,

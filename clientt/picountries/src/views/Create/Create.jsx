@@ -5,6 +5,7 @@ import { useEffect } from "react";
 import { getCountries} from "../../components/Redux/Actions/actionsGetCountries";
 import { postActivity } from "../../components/Redux/Actions/actionPostActivity";
 
+
 const Create = () => {
   const dispatch = useDispatch();
   const allCountries = useSelector((state) => state.backUp);
@@ -14,8 +15,9 @@ const Create = () => {
     dispatch(getCountries());
 
     return ()=>{
+     
     }
-  }, []);
+  }, [dispatch]);
 
   const [stateForm, setStateForm] = useState({
     name: "",
@@ -47,6 +49,8 @@ const Create = () => {
   const handleSubmit = (event) => {
     //para que no se recargue la pag
     event.preventDefault();
+    const form= document.getElementById("form")
+    form.reset();
     
     const body={
       nombre: stateForm.name,
@@ -57,7 +61,14 @@ const Create = () => {
     }
 
     dispatch(postActivity(body))
-    
+    setStateForm({
+      name: "",
+      difficulty: "",
+      duration:"",
+      season: "",
+      arrCountry: [],
+    })  
+    setSelect([])   
     
   };
 
@@ -67,7 +78,7 @@ const Create = () => {
       ...stateForm,
       arrCountry: [...stateForm.arrCountry, event.target.value],
     });
-    console.log("arr",stateForm.arrCountry)
+  
     const countries= allCountries.find((count)=>count.id === event.target.value)
 
     setSelect([
@@ -97,9 +108,7 @@ const Create = () => {
     
         
     //elimino los paises que selecciona el cliente
-  const filterCountries= allCountries.filter((count)=>!stateForm.arrCountry.includes(count.id))
-  console.log("filter",filterCountries)
-  
+  const filterCountries= allCountries.filter((count)=>!stateForm.arrCountry.includes(count.id)) 
 
   // const disable = () => {
   //   let disabled = true;
@@ -116,7 +125,7 @@ const Create = () => {
   const validate = (stateForm,name) => {
     const regex = /^[a-zA-Z\s]+$/
     if(name==="name"){
-      console.log(name)
+      
       if(stateForm.name === ""|| stateForm.name.length < 5 || stateForm.name.length > 30 || !regex.test(stateForm.name)){
         setError({...error, name:"*Campo obligatorio debe tener entre 5 y 30 caracteres Alfabéticos*"})
       }   
@@ -171,8 +180,8 @@ const Create = () => {
   
   return (
     <div className={style.formCont}>
-      {console.log(stateForm)}
-      <form onSubmit={handleSubmit}>
+     
+      <form id="form" onSubmit={handleSubmit}>
         <label className={style.letter}>Name</label>
         <input name="name" onChange={handleChange} type="text" />
         <label className={style.error}>{error.name}</label>
@@ -208,8 +217,10 @@ const Create = () => {
               {country.name}
             </option>
           ))}
+          
         </select>
         <label className={style.error}>{error.country}</label>
+        
 
         <div className={style.countries}>
           {/* muestra seleccionados*/}
@@ -225,7 +236,7 @@ const Create = () => {
         </div>
 
         <input
-
+         
           className={style.submit}
           type="submit"
           value="Create Activity"

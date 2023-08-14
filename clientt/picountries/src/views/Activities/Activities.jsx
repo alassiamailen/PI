@@ -11,8 +11,6 @@ import { deleteActivities } from "../../components/Redux/Actions/actionsDeleteAc
 const Activities= ()=>{
     const dispatch=useDispatch();
     const allActivities= useSelector((state)=>state.allActivities);
-    console.log(allActivities,"acti")
-
     
 
     useEffect(()=>{
@@ -21,13 +19,12 @@ const Activities= ()=>{
       return ()=>{}
       
     }, [])
-    
+
     const [aux, setAux] = useState(false);
     const deleteActivity=(id)=>{
       dispatch(deleteActivities(id))
       aux ? setAux(false) : setAux(true);
-    }
-  
+    }  
     
 
     return(

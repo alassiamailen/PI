@@ -10,7 +10,7 @@ const Details = () => {
   const dispatch = useDispatch();
   const {id}  = useParams();
   const countryDetail = useSelector((state) => state.countryDetail);
-  console.log("detail",countryDetail)
+ 
 
   useEffect(() => {
     dispatch(getDetails(id));
