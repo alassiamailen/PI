@@ -15,7 +15,8 @@ import { getName } from "../../components/Redux/Actions/actionsGetName";
 const Home = () => {
   const [name,setName]= useState('');
   const dispatch = useDispatch();
-  const allCountries = useSelector((state) => state.allCountries);
+  const Renderiza = useSelector((state) => state.Renderiza);
+
   useEffect(() => {
     dispatch(getCountries());    
   },[]);
@@ -23,18 +24,23 @@ const Home = () => {
   const page=(event)=>{
     dispatch(paginate(event.target.name))
   }
+
   const orderByName=(event)=>{
     dispatch(order(event.target.name))
   }
+
   const orderByPopulation=(event)=>{
     dispatch(population(event.target.name))
   }
+
   const filterCont=(event)=>{
     dispatch(byContinent(event.target.value))
   }
+
   const handlerSubmit=(event)=>{    
     setName(event.target.value)
   }
+
   const searchCountry=(event)=>{
     const regex= /^[a-zA-ZñÑáéíóúÁÉÍÓÚ]+$/   
     event.preventDefault();
@@ -43,6 +49,7 @@ const Home = () => {
     dispatch(getName(name))
     setName('')
   }
+
   const refresh=(event)=>{
     dispatch(getCountries(event))
   }
@@ -86,7 +93,7 @@ const Home = () => {
         
 
         </div>
-        <Cards allCountry={allCountries}/>
+        <Cards allCountry={Renderiza}/>
       </div>
     </div>
   );
