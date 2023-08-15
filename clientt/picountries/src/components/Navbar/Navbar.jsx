@@ -26,14 +26,7 @@ const Navbar = () => {
               Creat Activity
             </Link>
           </p>
-        </div>
-        <div className={style.activity}>
-          <p>
-            <Link className={style.link} to={"/activities"}>
-              My Activities
-            </Link>
-          </p>
-        </div>
+        </div>       
       </div>
       <div></div>
     </div>

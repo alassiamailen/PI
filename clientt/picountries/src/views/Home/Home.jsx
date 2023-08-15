@@ -10,6 +10,7 @@ import { byContinent } from "../../components/Redux/Actions/actionsByContinent";
 import { getName } from "../../components/Redux/Actions/actionsGetName";
 import Paginate from "../../components/Paginate/paginate";
 import  PageNumbers from "../../components/Paginate/pageNumbers";
+import Activities from "../Activities/Activities";
 
 
 const Home = () => {
@@ -61,6 +62,8 @@ const Home = () => {
     dispatch()
   }
 
+
+
   const handlerSubmit=(event)=>{    
     setName(event.target.value)
   }
@@ -111,21 +114,17 @@ const Home = () => {
             <option value="Oceania">OCEANIA</option>
           </select>
       </div>
-
-      <div>        
-        <select onChange={filterActivities} name="activities">
-          <option>ACTIVITIES</option>
-
-        </select>
+      <div>
+        <Activities/>
       </div>
         
         <div>
           <Paginate
-                      countriesPage={countriesPage}
-                      allCountries={allCountries.length}
-                      paginate={paginate}
-                      currentpage={currentPage}
-              />
+             countriesPage={countriesPage}
+             allCountries={allCountries.length}
+             paginate={paginate}
+             currentpage={currentPage}
+          />
         </div>
 
         </div>

@@ -3,59 +3,49 @@ import { useEffect ,useState} from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { getActivities } from "../../components/Redux/Actions/actionsGetActivities";
 import style from "./activities.module.css";
-import { deleteActivities } from "../../components/Redux/Actions/actionsDeleteActivities";
-
-
-
+import {filterCountriesByActivities} from "../../components/Redux/Actions/actionsFilterCountriesByActivities";
+import {getCountries} from "../../components/Redux/Actions/actionsGetCountries";
 
 const Activities= ()=>{
     const dispatch=useDispatch();
-    const allActivities= useSelector((state)=>state.allActivities);
-    
+    const dependencia= useSelector((state)=>state);
+    const [currentPAge,setCurrentPage]=useState(1);    
 
     useEffect(()=>{
 
       dispatch(getActivities());
-      return ()=>{}
-      
-    }, [])
+      dispatch(getCountries(dependencia.allCountries))
+           
+    }, [dispatch])
 
-    const [aux, setAux] = useState(false);
-    const deleteActivity=(id)=>{
-      dispatch(deleteActivities(id))
-      aux ? setAux(false) : setAux(true);
-    }  
+    let values= dependencia.allActivities;
     
+    values= values.map((e)=>e.name)
 
-    return(
-      <div>
-         
-      {allActivities?.map((act)=>{
-        return(
-          <div className={style.contP}>
-            <p className={style.p}>Nombre: {act.name}</p>
-            <p className={style.p}> Dificultad: {act.dificultad}</p>
-            <p className={style.p}>Duracion: {act.duracion}</p>
-            <p className={style.p}>Temporada: {act.temporada}</p>
-            {act.Countries?.map((c)=>{
-               return(
-              <div>
-                <p className={style.p}>{c.name}</p>
-                <img className={style.img} src={c.img} alt="img" />
-              </div>
-                )
-            })}
-           <div className={style.button}>
-           <button onClick={()=>{deleteActivity(act.id)}} className={style.x}>✖</button>
-           </div>
-            
-          </div>
-        )
-      })}
+    const onlyValues= [...new Set(values)]
 
-      </div>
+    const handlerActivity= (event)=>{
+      
+      dispatch(filterCountriesByActivities(event.target.value))
+      setCurrentPage(1)
+    }
+    
+    return(      
+         <select onChange={handlerActivity}>
+          <option value="Select activity">Select activity</option>
+          <option value="All activities">All activities</option>
+          {onlyValues?.map((activity,index)=>{
+            return(
+              <option value={activity} key={index}>
+                {activity}
+              </option>
+            )
+          })}
+         </select>
+      
+      
+
     );
 }
-
 
 export default Activities;
