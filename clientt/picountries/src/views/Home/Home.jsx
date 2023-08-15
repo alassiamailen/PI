@@ -7,26 +7,22 @@ import { getCountries } from "../../components/Redux/Actions/actionsGetCountries
 import { order } from "../../components/Redux/Actions/actionsOrder";
 import { population } from "../../components/Redux/Actions/actionsPopulation";
 import { byContinent } from "../../components/Redux/Actions/actionsByContinent";
-import { getName } from "../../components/Redux/Actions/actionsGetName";
 import Paginate from "../../components/Paginate/paginate";
 import  PageNumbers from "../../components/Paginate/pageNumbers";
 import Activities from "../Activities/Activities";
 
 
 const Home = () => {
-  const [name,setName]= useState('');
+  
   const dispatch = useDispatch();
   const allCountries = useSelector((state) => state.allCountries);
-
-
   const [currentPage, setCurrentPage] = useState(1)
   const [countriesPage] = useState(10)
+
   const indexLastCountry = currentPage * countriesPage
   const indexFirstCountry = indexLastCountry - countriesPage
   const currentCountries = allCountries.slice(indexFirstCountry, indexLastCountry);   
-  const cantCountries = allCountries.length
-
-  const numerito = Math.ceil(cantCountries/countriesPage)
+  const cantCountries = allCountries.length  
 
   const arrayPages = PageNumbers(countriesPage, cantCountries)
   const cantPages = arrayPages.length
@@ -44,8 +40,6 @@ const Home = () => {
     dispatch(getCountries());    
   },[]);
 
-
-
   const orderByName=(event)=>{
     dispatch(order(event.target.name))
   }
@@ -60,22 +54,7 @@ const Home = () => {
 
   const filterActivities = (event) => {
     dispatch()
-  }
-
-
-
-  const handlerSubmit=(event)=>{    
-    setName(event.target.value)
-  }
-
-  const searchCountry=(event)=>{
-    const regex= /^[a-zA-ZñÑáéíóúÁÉÍÓÚ]+$/   
-    event.preventDefault();
-    if(!name) return alert('Ingrese un pais para continuar')
-    if(!regex.test(name)) return alert('Solo se permiten letras')
-    dispatch(getName(name))
-    setName('')
-  }
+  }  
 
   const refresh=(event)=>{
     dispatch(getCountries(event))
@@ -85,8 +64,7 @@ const Home = () => {
     <div className={style.homeCont}>
      
       <h1 className={style.subtitle}>PAISES</h1>
-      <input  value={name} onChange={(event)=>handlerSubmit(event)} type="text" name="Buscar" placeholder="Buscar" />
-      <button type="submit" onClick={searchCountry}>Search</button>
+   
       <div>
         <button onClick={refresh}>
           Refresh
@@ -118,7 +96,7 @@ const Home = () => {
         <Activities/>
       </div>
         
-        <div>
+        <div className={style.pag}>
           <Paginate
              countriesPage={countriesPage}
              allCountries={allCountries.length}

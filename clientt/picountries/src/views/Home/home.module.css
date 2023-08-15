@@ -1,7 +1,26 @@
 .homeCont{
-    text-align: center;
+    text-align: center;   
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+   align-content: center;
+
 }
 .subtitle{
     color: white;
     font-family:'Handjet', cursive ;
 }
+.pag{    
+    flex-wrap: wrap;
+    display: flex;
+    justify-content: center;
+    
+}
+.search{
+width: 15rem;
+}
+.but{
+    width: 15rem;
+}
+
+
