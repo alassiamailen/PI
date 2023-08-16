@@ -21,7 +21,9 @@ const Activities= ()=>{
 
     let values= dependencia.allActivities;
     
+    
     values= values.map((e)=>e.name)
+    
       //quita repetidos
     const onlyValues= [...new Set(values)]
     

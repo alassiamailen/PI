@@ -4,12 +4,14 @@
 }
 .detail{
     color: white;
-    align-items: center;   
+    align-items: center;  
+      
     
 }
 .contDetail{   
     font-family:'Handjet', cursive ;
-    font-size: x-large;   
+    font-size: x-large;      
+    
 }
 .img{
    border-radius: 2rem;
@@ -17,14 +19,17 @@
 .back{
   background-color: #b79449;
   font-size: large;
-  border-radius: 0.5rem;    
+  border-radius: 0.5rem;   
+   
 }
 .x{
     display: flex;
+    margin-top: 2rem;   
     
 }
+
 .cont{
-    background-color: #050505;
+    background-color: #050505;   
     border-radius: 4rem;
     padding-bottom: 1rem;
     width: 50rem;
@@ -33,12 +38,11 @@
     box-shadow: 0 4px 8px #b79449;
 
 }
-
 .name{     
     font-family:'Handjet', cursive ;
 }
 .contenedor{
     display: flex;   
-    justify-content: center;
-   
+    justify-content: center;  
+    margin-top: 10rem; 
 }

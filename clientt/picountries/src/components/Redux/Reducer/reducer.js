@@ -14,7 +14,7 @@ import {
 let initialState = {
   backUp:[],
   allCountries: [], 
-  allCountriesFiltered: [], 
+  completedCountries: [], 
   countryDetail:[],
   allActivities:[],  
 };
@@ -33,7 +33,7 @@ const reducer = (state = initialState, action) => {
       return {
         ...state,
         allCountries: [...action.payload],
-        allCountriesFiltered: action.payload,   
+        completedCountries: action.payload,   
         backUp: action.payload
       };
 
@@ -46,49 +46,45 @@ const reducer = (state = initialState, action) => {
    
        
     case FILTER_COUNTRIES_BY_ACTIVITIES:
-      const countries = state.allCountriesFiltered;
+      const countries = state.completedCountries;
       const allActivities = state.allActivities
       const nameActivity = action.payload
-      console.log(allActivities)
+      
 
-      const actividadesCoinciden=[]
+      const mathAct=[]
       let countriesFinal=[]
         
         // busco el pais q tiene esa act
       if(nameActivity === "Select activity"){
-        countriesFinal=countries        
+        countriesFinal = countries        
+        
       
       } else{
         
         if(nameActivity==="All activities"){
           allActivities.map((e)=>{
-            return actividadesCoinciden.push(e.Countries)
+            return mathAct.push(e.Countries)
           })
         }else{
           allActivities.map((e) => {
             if(e.name===nameActivity){
-              actividadesCoinciden.push(e.Countries)
-              console.log(actividadesCoinciden)
+              mathAct.push(e.Countries)              
             }
           })
         }
       } 
 
-      // agarra lo que tiene actmach lo recorre y se queda con el name
-        //actividadesCoinciden = [ { }, { }, { }]
-
-
       const actividadesCoincidenAdentro = []
 
-      for(let i=0; i<actividadesCoinciden.length;i++){
+      for(let i=0; i<mathAct.length;i++){
 
-        actividadesCoinciden[i].map((e)=>{
+        mathAct[i].map((e)=>{
           return actividadesCoincidenAdentro.push(e.name)
         })
 
       }      
-
-        //quita repetidso
+       
+        //quita repetidos
       const countriesNames = [...new Set(actividadesCoincidenAdentro)]
 
       for(let name of countriesNames){ 
@@ -160,8 +156,17 @@ const reducer = (state = initialState, action) => {
       break;
       
     case BYCONTINENT:
-      const countriesFilter = [...state.allCountriesFiltered].filter(element =>
-        element.continente === action.payload) 
+        let countriesFilter=[]
+
+      if(action.payload==="continents"){
+        countriesFilter=state.completedCountries
+      }else{
+        countriesFilter = [...state.completedCountries].filter(element =>
+          element.continente === action.payload) 
+      }
+
+       
+
       return{
         ...state,
         allCountries:[...countriesFilter],
@@ -177,7 +182,7 @@ const reducer = (state = initialState, action) => {
       return{
         ...state,
         allCountries:action.payload,
-        allCountriesFiltered:action.payload,
+        
                
       }
 

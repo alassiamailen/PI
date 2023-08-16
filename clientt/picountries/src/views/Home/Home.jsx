@@ -54,12 +54,13 @@ const Home = () => {
 
   const refresh=()=>{
     dispatch(getCountries())
+    setCurrentPage(1)
   }
 
   return (
     <div className={style.homeCont}>
      
-      <h1 className={style.subtitle}>PAISES</h1>
+      <h1 className={style.subtitle}>COUNTRIES</h1>
       <div className={style.divGrande}>
 
         <div>
@@ -82,7 +83,7 @@ const Home = () => {
       <div>
           
           <select className={style.select} onChange={filterCont} name="continent">
-          <option selected ="true" disabled="disable">Continents...</option>
+          <option value="continents" >All continents</option>
             <option value="Asia">ASIA</option>
             <option value="South America">AMERICA DEL SUR</option>
             <option value="North America">AMERICA DEL NORTE</option>
@@ -107,7 +108,8 @@ const Home = () => {
         </div>
 
         </div>
-        <Cards allCountry={currentCountries}/>
+        {!currentCountries.length? <p className={style.p}>Pais inexistente</p> : <Cards allCountry={currentCountries}/> }
+        
     </div>
     
   );

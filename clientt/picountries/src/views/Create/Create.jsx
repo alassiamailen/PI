@@ -47,8 +47,7 @@ const Create = () => {
       [event.target.name]:event.target.value
 
     },event.target.name)
-
-    console.log(stateForm.arrCountry)
+    
   };
 
   const handleSubmit = (event) => {
@@ -96,12 +95,13 @@ const Create = () => {
       })
     }
 
+    
     setSelect([
       ...select,
       obj          
     ])       
      
-    if(stateForm.arrCountry.length > 4){
+    if(select.length > 4){
       return alert('Máximo 5 paises')
     }
   
@@ -127,6 +127,7 @@ const Create = () => {
         
     //elimino los paises que selecciona el cliente
   const filterCountries= allCountries.filter((count)=>!stateForm.arrCountry.includes(count.id)) 
+  
 
   const disable = () => {
     let disabled = true;
@@ -217,11 +218,14 @@ const Create = () => {
         <select name="arrCountry" id="country" onChange={handleSelect}>
           {/* este mapea  */}
           <option selected>Select country...</option>
-          {filterCountries?.map((country) => (
-            <option key={country.id} value={country.id}>
+          {filterCountries?.map((country) => {
+            return (
+              <option key={country.id} value={country.id}>
               {country.name}
             </option>
-          ))}
+            )
+            }
+          )}
           
         </select>
         <label className={style.error}>{error.country}</label>

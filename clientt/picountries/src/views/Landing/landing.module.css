@@ -34,5 +34,7 @@ flex-direction: column;
     display: flex;
     color: white;
     font-family:'Handjet', cursive ;
+    font-size: xx-large;
+    margin-top: 8rem;
 }
 

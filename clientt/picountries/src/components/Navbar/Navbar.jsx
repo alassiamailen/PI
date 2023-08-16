@@ -1,5 +1,5 @@
 import React from "react";
-import { Link } from "react-router-dom/cjs/react-router-dom.min";
+import { Link, useLocation } from "react-router-dom/cjs/react-router-dom.min";
 import style from "./nav.module.css";
 import { useState } from "react";
 import { useDispatch } from "react-redux";
@@ -11,16 +11,18 @@ import { useEffect } from "react";
 const Navbar = () => {
   const [name,setName]= useState('');
   const dispatch = useDispatch();
+  const location= useLocation();
+
   useEffect(()=>{
-    dispatch(getName)
+    dispatch(getName(name))
   },[dispatch,name])
-  const searchCountry=(event)=>{
+
+  const handlerSubmit=(event)=>{
    dispatch(getName(event.target.value))
   }
-  const handlerSubmit=(event)=>{   
 
+  const searchCountry=(event)=>{ 
     setName(event.target.value)
-
   }
 
 
@@ -47,12 +49,15 @@ const Navbar = () => {
             </Link>
           </p>
         </div>  
-        <div className={style.ser}>
-           <input className={style.search} value={name} onChange={(event)=>handlerSubmit(event)} type="text" name="Buscar" placeholder="Buscar" />
-           <button className={style.but} type="submit" onClick={searchCountry}>Search</button>
-        </div>     
+        {
+          location.pathname === ('/home') &&
+           <form className={style.ser} onSubmit={handlerSubmit}>            
+              <input className={style.search} value={name} onChange={(event)=>searchCountry(event)} type="text" name="Buscar" placeholder="Search Countries" />
+          </form>     
+        }
+        
       </div>
-      <div></div>
+      
     </div>
   );
 };

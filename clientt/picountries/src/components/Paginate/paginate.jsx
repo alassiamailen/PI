@@ -14,7 +14,7 @@ const Paginate = ({countriesPage, allCountries, paginate, currentpage}) => {
                 {arrayPage && arrayPage.map((number, index) => (
                         <div className={style.num} key={index}  >
                             {currentpage === number ?
-                                <button className={style.but} onClick={() => paginate(number)}>{number}</button>
+                                <button className={style.butSelected} onClick={() => paginate(number)}>{number}</button>
                                 :
                                 <button className={style.but} onClick={() => paginate(number)}>{number}</button>
                             }

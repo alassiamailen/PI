@@ -14,10 +14,7 @@ const postActivitiesControllers = async (
     where: { name: nombre },
   });
 
-  if (nameActivity) {
-    throw new Error("La actividad ya existe");
-  }
-
+  
   const activity = await Activity.create({
     name: nombre,
     dificultad,

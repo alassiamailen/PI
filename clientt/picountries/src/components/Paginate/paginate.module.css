@@ -30,4 +30,9 @@ width: 80vw;
   font-size: medium;
   
 }
+.butSelected{
+  background-color: #e19f10;
+  font-family:'Handjet', cursive ;
+  font-size: medium;
+}
 

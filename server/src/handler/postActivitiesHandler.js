@@ -2,7 +2,7 @@ const postActivitiesControllers = require('../controllers/postActivitiesControll
 
 
 const postActivitiesHandlers= async(req,res)=>{
-  console.log("entre al handler")
+  
 try {
     const {nombre,dificultad,duracion,temporada,pais}= req.body;
     const response= await postActivitiesControllers(nombre,dificultad,temporada,duracion,pais)

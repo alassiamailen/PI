@@ -8,7 +8,7 @@ const Countries = ({allCountry}) => {
   return (
     <div className={style.contCountries}>
       {
-        allCountry?.map((country)=> <Card id={country.id} name={country.name} continente={country.continente} img={country.img} capital={country.capital} poblacion={country.poblacion}/>)
+        allCountry?.map((country)=> <Card key={country.id} id={country.id} name={country.name} continente={country.continente} img={country.img} capital={country.capital} poblacion={country.poblacion}/>)
       }
     </div>
   )
