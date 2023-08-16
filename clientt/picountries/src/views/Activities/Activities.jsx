@@ -14,15 +14,17 @@ const Activities= ()=>{
     useEffect(()=>{
 
       dispatch(getActivities());
-      dispatch(getCountries(dependencia.allCountries))
+      dispatch(getCountries(dependencia.allCountries))     
+      
            
     }, [dispatch])
 
     let values= dependencia.allActivities;
     
     values= values.map((e)=>e.name)
-
+      //quita repetidos
     const onlyValues= [...new Set(values)]
+    
 
     const handlerActivity= (event)=>{
       
@@ -31,7 +33,7 @@ const Activities= ()=>{
     }
     
     return(      
-         <select onChange={handlerActivity}>
+         <select className={style.selec} onChange={handlerActivity}>
           <option value="Select activity">Select activity</option>
           <option value="All activities">All activities</option>
           {onlyValues?.map((activity,index)=>{

@@ -6,7 +6,7 @@
   padding-inline: 0px;
   height: fit-content;
   bottom: 0;
-  width: 100%;
+  width: 100%;  
   
 }
 .contButton{
@@ -15,10 +15,19 @@ flex-wrap: wrap;
 height: fit-content ;
 width: 80vw;
 }
+.contButton:hover{
+  box-shadow: 0 4px 8px #b79449;
+}
 .contFull{
-  
   display: flex;
   justify-content: center;
   flex-wrap: wrap;
   width: 80vw;
 }
+.but{
+  background-color: #b79449;
+  font-family:'Handjet', cursive ;
+  font-size: medium;
+  
+}
+

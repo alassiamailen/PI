@@ -6,6 +6,7 @@ export function getName(name){
         try {
           const countryResponse= await axios.get(`http://localhost:3001/countries/name?name=${name}`)  
           const countryData= countryResponse.data;
+          console.log(countryResponse)
           
          
           return dispatch({
@@ -13,7 +14,8 @@ export function getName(name){
             payload: countryData
           })
         } catch (error) {
-            console.log(error)
+            alert("País no encontrado")
+            console.log("pais no encontrado")
         }
 
     }

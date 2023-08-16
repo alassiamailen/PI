@@ -4,23 +4,23 @@ import style from "./nav.module.css";
 import { useState } from "react";
 import { useDispatch } from "react-redux";
 import { getName } from "../../components/Redux/Actions/actionsGetName";
+import { useEffect } from "react";
 
 
 
 const Navbar = () => {
   const [name,setName]= useState('');
   const dispatch = useDispatch();
-
+  useEffect(()=>{
+    dispatch(getName)
+  },[dispatch,name])
   const searchCountry=(event)=>{
-    const regex= /^[a-zA-ZñÑáéíóúÁÉÍÓÚ]+$/   
-    event.preventDefault();
-    if(!name) return alert('Ingrese un pais para continuar')
-    if(!regex.test(name)) return alert('Solo se permiten letras')
-    dispatch(getName(name))
-    setName('')
+   dispatch(getName(event.target.value))
   }
-  const handlerSubmit=(event)=>{    
+  const handlerSubmit=(event)=>{   
+
     setName(event.target.value)
+
   }
 
 
@@ -47,7 +47,7 @@ const Navbar = () => {
             </Link>
           </p>
         </div>  
-        <div>
+        <div className={style.ser}>
            <input className={style.search} value={name} onChange={(event)=>handlerSubmit(event)} type="text" name="Buscar" placeholder="Buscar" />
            <button className={style.but} type="submit" onClick={searchCountry}>Search</button>
         </div>     

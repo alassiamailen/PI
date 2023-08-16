@@ -26,6 +26,10 @@ const reducer = (state = initialState, action) => {
   switch (action.type) {
     
     case GET_COUNTRIES:
+      const selects = document.getElementsByTagName("select");
+      for (let i = 0; i < selects.length; i++) {
+        selects[i].selectedIndex = 0;
+      }
       return {
         ...state,
         allCountries: [...action.payload],
@@ -45,14 +49,15 @@ const reducer = (state = initialState, action) => {
       const countries = state.allCountriesFiltered;
       const allActivities = state.allActivities
       const nameActivity = action.payload
+      console.log(allActivities)
 
       const actividadesCoinciden=[]
       let countriesFinal=[]
-        console.log(nameActivity)
-        console.log(allActivities)
+        
         // busco el pais q tiene esa act
       if(nameActivity === "Select activity"){
-        countriesFinal=countries
+        countriesFinal=countries        
+      
       } else{
         
         if(nameActivity==="All activities"){
@@ -63,6 +68,7 @@ const reducer = (state = initialState, action) => {
           allActivities.map((e) => {
             if(e.name===nameActivity){
               actividadesCoinciden.push(e.Countries)
+              console.log(actividadesCoinciden)
             }
           })
         }
@@ -80,8 +86,7 @@ const reducer = (state = initialState, action) => {
           return actividadesCoincidenAdentro.push(e.name)
         })
 
-      }
-      console.log( actividadesCoincidenAdentro)
+      }      
 
         //quita repetidso
       const countriesNames = [...new Set(actividadesCoincidenAdentro)]
@@ -89,6 +94,7 @@ const reducer = (state = initialState, action) => {
       for(let name of countriesNames){ 
         countriesFinal.push(countries.find((e)=>e.name === name))
       }
+      
 
       return{
         ...state,

@@ -52,37 +52,37 @@ const Home = () => {
     dispatch(byContinent(event.target.value))
   }
 
-  const filterActivities = (event) => {
-    dispatch()
-  }  
-
-  const refresh=(event)=>{
-    dispatch(getCountries(event))
+  const refresh=()=>{
+    dispatch(getCountries())
   }
 
   return (
     <div className={style.homeCont}>
      
       <h1 className={style.subtitle}>PAISES</h1>
-   
-      <div>
-        <button onClick={refresh}>
-          Refresh
-        </button>
-      </div>
+      <div className={style.divGrande}>
 
-      <div>        
-        <button name="az" onClick={orderByName}>A-Z</button>
-        <button name="za" onClick={orderByName}>Z-A</button>
-      </div>
-      <div>
-        <button name="mayorP" onClick={orderByPopulation}>+ Population</button>
-        <button name="menorP" onClick={orderByPopulation}> - Population</button>
-      <div>
+        <div>
+          <button className={style.ref} onClick={refresh}>
+            Refresh
+          </button>
+        </div>
+
+         <div className={style.divAz}>        
+            <button className={style.az} name="az" onClick={orderByName}>A-Z</button>
+            <button className={style.az} name="za" onClick={orderByName}>Z-A</button>
+         </div>        
+        
+          <div className={style.population}>
+            <button className={style.popu} name="mayorP" onClick={orderByPopulation}>+ Population</button>
+            <button className={style.popu} name="menorP" onClick={orderByPopulation}> - Population</button>
+
+          </div>
+            
       <div>
           
-          <select onChange={filterCont} name="continent">
-          <option value="">Continents...</option>
+          <select className={style.select} onChange={filterCont} name="continent">
+          <option selected ="true" disabled="disable">Continents...</option>
             <option value="Asia">ASIA</option>
             <option value="South America">AMERICA DEL SUR</option>
             <option value="North America">AMERICA DEL NORTE</option>
@@ -92,6 +92,7 @@ const Home = () => {
             <option value="Oceania">OCEANIA</option>
           </select>
       </div>
+
       <div>
         <Activities/>
       </div>
@@ -107,8 +108,8 @@ const Home = () => {
 
         </div>
         <Cards allCountry={currentCountries}/>
-      </div>
     </div>
+    
   );
 };
 

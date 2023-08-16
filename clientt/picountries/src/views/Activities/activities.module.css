@@ -20,11 +20,14 @@
     font-size: large;
     
 }
-.button{
-    
-    display: flex;
-    
+.button{    
+    display: flex;    
 }
 .img{
     border-radius: 3rem;
+}
+.selec{
+    font-size: 1.5rem;
+font-family:'Handjet', cursive ;
+border-radius: 2rem;
 }
