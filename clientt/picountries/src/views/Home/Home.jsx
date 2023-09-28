@@ -24,8 +24,8 @@ const Home = () => {
   const currentCountries = allCountries.slice(indexFirstCountry, indexLastCountry);   
   const cantCountries = allCountries.length  
 
-  const arrayPages = PageNumbers(countriesPage, cantCountries)
-  const cantPages = arrayPages.length
+  const cantPages = PageNumbers(countriesPage, cantCountries).length
+  // const cantPages = arrayPages.length
 
 
   if(currentPage > cantPages){
@@ -37,7 +37,9 @@ const Home = () => {
   }
 
   useEffect(() => {
-    dispatch(getCountries());    
+    if(!allCountries){
+      dispatch(getCountries());  
+    } 
   },[]);
 
   const orderByName=(event)=>{

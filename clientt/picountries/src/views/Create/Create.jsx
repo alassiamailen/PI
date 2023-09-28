@@ -141,6 +141,7 @@ const Create = () => {
     }
     return disabled;
   };
+
   const validate = (stateForm,name) => {
     const regex = /^[a-zA-Z\s]+$/
     if(name==="name"){
@@ -204,7 +205,7 @@ const Create = () => {
         
 
         <label className={style.letter}>Season</label>
-        <select name="season" onChange={handleChange}>
+        <select name="season" onChange={handleChange} defaultValue="Verano">
           <option selected value="0">Select season...</option>
           <option >Verano</option>
           <option>Otoño</option>
@@ -215,7 +216,7 @@ const Create = () => {
         
 
         <label className={style.letter}>Country</label>
-        <select name="arrCountry" id="country" onChange={handleSelect}>
+        <select  name="arrCountry"  id="country" onChange={handleSelect}>
           {/* este mapea  */}
           <option selected>Select country...</option>
           {filterCountries?.map((country) => {

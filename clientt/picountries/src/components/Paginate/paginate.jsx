@@ -3,7 +3,7 @@ import PageNumbers from "./pageNumbers";
 import style from "./paginate.module.css";
 
 const Paginate = ({countriesPage, allCountries, paginate, currentpage}) => {
-
+    
     const arrayPage = PageNumbers(countriesPage, allCountries)
 
     return(
@@ -29,4 +29,4 @@ const Paginate = ({countriesPage, allCountries, paginate, currentpage}) => {
     
 }
 
-export default Paginate
+export default Paginate;
